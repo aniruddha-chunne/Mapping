@@ -1,8 +1,6 @@
 package com.mapping.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="jpa_laptop")
@@ -14,4 +12,58 @@ public class Laptop
     private String modelNumber;
     private String brand;
 
+//    @OneToOne(mappedBy = "laptop")
+    @OneToOne
+    private Student student;
+
+    public int getLaptopId() {
+        return laptopId;
+    }
+
+    public void setLaptopId(int laptopId) {
+        this.laptopId = laptopId;
+    }
+
+    public String getModelNumber() {
+        return modelNumber;
+    }
+
+    public void setModelNumber(String modelNumber) {
+        this.modelNumber = modelNumber;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Laptop(int laptopId, String modelNumber, String brand) {
+        this.laptopId = laptopId;
+        this.modelNumber = modelNumber;
+        this.brand = brand;
+    }
+
+    public Laptop() {
+    }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "laptopId=" + laptopId +
+                ", modelNumber='" + modelNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", student=" + student +
+                '}';
+    }
 }
